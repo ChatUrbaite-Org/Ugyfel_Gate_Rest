@@ -14,7 +14,7 @@ import static com.project.ugyfel_gate_rest.DataBase.GetArray.*;
 public class GetObject
 {
     @Nullable
-    protected static Organisation getOrgannisationbyId(int orgid)
+    public static Organisation getOrgannisationbyId(int orgid)
     {
         ArrayList<Organisation> orgs = getDataFromOrganisationsTable();
         for (Organisation org : orgs)
@@ -27,7 +27,7 @@ public class GetObject
         return null;
     }
     @Nullable
-    protected static User getUserById(int id)
+    public static User getUserById(int id)
     {
         ArrayList<User> users = getDataFromUserTable();
         for (User user : users)
@@ -40,7 +40,7 @@ public class GetObject
         return null;
     }
     @Nullable
-    protected static Location getLocationById(int locationid)
+    public static Location getLocationById(int locationid)
     {
         ArrayList<Location> locations = getDataFromLocationsTable();
         for (Location location : locations)

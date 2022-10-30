@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class GetJSON
 {
-    public static JSONObject getJSONIDCARD(@NotNull User user)
+    public static @NotNull JSONObject getJSONIDCARD(@NotNull User user)
     {
         ID_CARD id_card = GetObject.getID_CARDByUserid(user.getId());
         JSONObject id_cardO = new JSONObject();
@@ -20,7 +20,7 @@ public class GetJSON
         id_cardO.put("Organisation",getJSONORG(id_card.getOrgan()));
         return id_cardO;
     }
-    public static JSONObject getJSONLocationCard(@NotNull User user)
+    public static @NotNull JSONObject getJSONLocationCard(@NotNull User user)
     {
         Location_CARD location_card = GetObject.getLocation_CARDByUserid(user.getId());
         JSONObject location_cardO= new JSONObject();
@@ -33,7 +33,7 @@ public class GetJSON
         location_cardO.put("Organisation",getJSONORG(location_card.getOrganisation()));
         return location_cardO;
     }
-    public static JSONObject getJSONDriversLicense(@NotNull User user)
+    public static @NotNull JSONObject getJSONDriversLicense(@NotNull User user)
     {
         Drivers_License driversLicense = GetObject.getDriversLicenseByUserid(user.getId());
         JSONObject driversLicenseO = new JSONObject();
@@ -45,7 +45,7 @@ public class GetJSON
 
         return driversLicenseO;
     }
-    public static JSONObject getJSONORG(@NotNull Organisation organisation)
+    public static @NotNull JSONObject getJSONORG(@NotNull Organisation organisation)
     {
         JSONObject org = new JSONObject();
         org.put("Name",organisation.getName());
@@ -54,7 +54,7 @@ public class GetJSON
         org.put("Nationality",organisation.getNationality());
         return org;
     }
-    public static JSONObject getJSONRLocation(@NotNull Location location)
+    public static @NotNull JSONObject getJSONRLocation(@NotNull Location location)
     {
         JSONObject orglocation = new JSONObject();
 
@@ -67,7 +67,7 @@ public class GetJSON
         orglocation.put("Registration Date",location.getRegistration_date());
         return orglocation;
     }
-    public static JSONObject getJSONDLocation(@NotNull Location location)
+    public static @NotNull JSONObject getJSONDLocation(@NotNull Location location)
     {
         JSONObject orglocation = new JSONObject();
 
@@ -81,7 +81,7 @@ public class GetJSON
         orglocation.put("Expiry Date",location.getRegistration_date());
         return orglocation;
     }
-    public static JSONObject getJSONData(String Username, String MD5Password)
+    public static @NotNull JSONObject getJSONData(String Username, String MD5Password)
     {
         User user = GetObject.getUser(Username,MD5Password);
         JSONObject userO = new JSONObject();

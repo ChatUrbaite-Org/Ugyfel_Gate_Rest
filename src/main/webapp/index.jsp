@@ -8,7 +8,6 @@
 <h1><%= "Hello World!" %>
 </h1>
 <br/>
-<a href="${pageContext.request.contextPath}/rest/person/doTask/task">Hello</a>
-<a href="${pageContext.request.contextPath}/rest/person/get">Example</a>
+<a href="${pageContext.request.contextPath}/rest/data/get">Example</a>
 </body>
 </html>
