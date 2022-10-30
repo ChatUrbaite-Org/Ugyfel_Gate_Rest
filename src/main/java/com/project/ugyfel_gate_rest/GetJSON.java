@@ -24,7 +24,7 @@ public class GetJSON
     {
         Location_CARD location_card = GetObject.getLocation_CARDByUserid(user.getId());
         JSONObject location_cardO= new JSONObject();
-        location_cardO.put("Location Card ID", location_card.getLoc_Id());
+        location_cardO.put("Location Card ID", Objects.requireNonNull(location_card).getLoc_Id());
         location_cardO.put("Default Location",getJSONDLocation(Objects.requireNonNull(location_card).getDefaultlocation()));
         if(location_card.getResidentallocation() != null)
         {
@@ -38,7 +38,7 @@ public class GetJSON
         Drivers_License driversLicense = GetObject.getDriversLicenseByUserid(user.getId());
         JSONObject driversLicenseO = new JSONObject();
 
-        driversLicenseO.put("Card Number",driversLicense.getCard_number());
+        driversLicenseO.put("Card Number", Objects.requireNonNull(driversLicense).getCard_number());
         driversLicenseO.put("Acquire Date",driversLicense.getAcquire());
         driversLicenseO.put("Expiry Date",driversLicense.getExpiry());
         driversLicenseO.put("Organisation",getJSONORG(driversLicense.getOrgan()));
@@ -93,9 +93,9 @@ public class GetJSON
         userO.put("Sex",user.getSex());
         userO.put("BirthDate",user.getBirthdate());
         userO.put("Nationality",user.getNationality());
-        if(getJSONIDCARD(user)!= null) userO.put("ID Card",getJSONIDCARD(user));
-        if(getJSONLocationCard(user)!= null) userO.put("Location Card",getJSONLocationCard(user));
-        if(getJSONDriversLicense(user) != null) userO.put("Drivers License",getJSONDriversLicense(user));
+        userO.put("ID Card",getJSONIDCARD(user));
+        userO.put("Location Card",getJSONLocationCard(user));
+        userO.put("Drivers License",getJSONDriversLicense(user));
         return userO;
 
     }

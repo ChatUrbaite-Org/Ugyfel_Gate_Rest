@@ -1,10 +1,8 @@
 package com.project.ugyfel_gate_rest.DataBase;
 
 import com.project.ugyfel_gate_rest.Classes.*;
-import com.project.ugyfel_gate_rest.MD5;
 import org.jetbrains.annotations.Nullable;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Objects;
 
