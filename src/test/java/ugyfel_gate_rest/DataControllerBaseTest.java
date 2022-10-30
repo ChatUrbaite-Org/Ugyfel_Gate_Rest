@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import static junit.framework.Assert.assertEquals;
 
 
-public class DataBaseTest
+public class DataControllerBaseTest
 {
     Insert_Into_DataBase insert = new Insert_Into_DataBase();
 
@@ -33,7 +33,7 @@ public class DataBaseTest
     Location_CARD location_card1 = new Location_CARD("123345678A",location,user,organisation);
     Drivers_License driversLicense = new Drivers_License(user,"sdadsa",Date.valueOf("2021-07-01"),Date.valueOf("2031-07-01"),organisation);
     Message message = new Message(user,organisation,"Befizetés","Önnek egy befizetetlen számlája van!",Date.valueOf("2022-10-26"),Date.valueOf("2022-11-26"),false,false);
-    public DataBaseTest() throws NoSuchAlgorithmException {
+    public DataControllerBaseTest() throws NoSuchAlgorithmException {
         new Create_DataBase_With_Tables();
         new LoadMySQL();
     }

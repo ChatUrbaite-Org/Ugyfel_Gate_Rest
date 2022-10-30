@@ -14,7 +14,7 @@ import static com.project.ugyfel_gate_rest.DataBase.GetObject.*;
 
 
 @Path("/data")
-public class Data implements DataService
+public class DataController implements DataService
 {
     Insert_Into_DataBase insert = new Insert_Into_DataBase();
 
