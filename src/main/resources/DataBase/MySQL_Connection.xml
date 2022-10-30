@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<class>
+    <DataBase>
+        <Driver>com.mysql.cj.jdbc.Driver</Driver>
+        <Address>jdbc:mysql://localhost:3306/</Address>
+        <UserPass>?user=root&amp;password=</UserPass>
+        <DBName>projekt</DBName>
+        <UserName>root</UserName>
+        <Password></Password>
+    </DataBase>
+</class>
