@@ -1,15 +1,13 @@
 package com.project.ugyfel_gate_rest;
 
 import com.project.ugyfel_gate_rest.Classes.*;
-import com.project.ugyfel_gate_rest.DataBase.GetId;
-import com.project.ugyfel_gate_rest.DataBase.GetObject;
 import com.project.ugyfel_gate_rest.DataBase.Insert_Into_DataBase;
 import com.project.ugyfel_gate_rest.Enums.Nationality;
 import org.json.JSONObject;
 
 import javax.ws.rs.*;
-import javax.ws.rs.core.*;
-import java.security.NoSuchAlgorithmException;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.Date;
 
 import static com.project.ugyfel_gate_rest.DataBase.GetObject.*;
@@ -24,8 +22,7 @@ public class Data implements DataService
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes ("application/c-www-form-urlencoded")
-    public Response getData(@HeaderParam("UserName") String username, @HeaderParam("Token") String token) throws NoSuchAlgorithmException
-    {
+    public Response getData(@HeaderParam("UserName") String username, @HeaderParam("Token") String token) {
         JSONObject resp = new JSONObject();
         resp.put("Username",username);
         resp.put("Token",token);
@@ -57,7 +54,6 @@ public class Data implements DataService
                                   @HeaderParam("girlName") String girlName,
                                   @HeaderParam("natinality") String nationality)
     {
-        boolean done = true;
         try
         {
             insert.insertIntoUserTable(new User(name,username,token,email,birthDate,birthPlace,sex,true,isMom,girlName,nationality));
@@ -79,7 +75,6 @@ public class Data implements DataService
                                        @HeaderParam("registrationDate") Date registration_date,
                                        @HeaderParam("rest") String rest)
     {
-        boolean done = true;
         try
         {
             insert.insertIntoLocationsTable(new Location(country,county,city,street,house_number,rest,registration_date));
@@ -102,7 +97,6 @@ public class Data implements DataService
                                        @HeaderParam("expirationDate") Date expiration_date,
                                        @HeaderParam("rest") String rest)
     {
-        boolean done = true;
         try
         {
             insert.insertIntoLocationsTable(new Location(country,county,city,street,house_number,rest,expiration_date,registration_date));
@@ -120,7 +114,6 @@ public class Data implements DataService
                                           @HeaderParam("locid") int locid,
                                           @HeaderParam("nationality") String nationality)
     {
-        boolean done = true;
         try
         {
             insert.insertIntoOrganisationsTable(new Organisation(name, getLocationById(locid),Nationality.valueOf(nationality)));
@@ -142,7 +135,6 @@ public class Data implements DataService
                                     @HeaderParam("expiry") Date Expiry,
                                     @HeaderParam("nationality") String nation)
     {
-        boolean done = true;
         try
         {
             insert.insertIntoIDCardTable(new ID_CARD(can_number, getUserById(userid), getOrgannisationbyId(organid),idNum,fingerPrint,Expiry, Nationality.valueOf(nation)));
@@ -161,7 +153,6 @@ public class Data implements DataService
                                        @HeaderParam("defaultlocation") int defaultlocation,
                                        @HeaderParam("organid") int organid)
     {
-        boolean done = true;
         try
         {
             insert.insertIntoLocationCardTable(new Location_CARD(loc_Id, getLocationById(defaultlocation), getUserById(userid), getOrgannisationbyId(organid)));
@@ -181,7 +172,6 @@ public class Data implements DataService
                                         @HeaderParam("residentallocation") int residentallocation,
                                         @HeaderParam("organid") int organid)
     {
-        boolean done = true;
         try
         {
             insert.insertIntoLocationCardTable(new Location_CARD(loc_Id, getLocationById(defaultlocation), getLocationById(residentallocation), getUserById(userid), getOrgannisationbyId(organid)));
@@ -201,7 +191,6 @@ public class Data implements DataService
                                          @HeaderParam("acquire") Date acquire,
                                          @HeaderParam("organid") int organid)
     {
-        boolean done = true;
         try
         {
             insert.insertIntoDriversLicenseTable(new Drivers_License(getUserById(userid),card_number,expiry,acquire,getOrgannisationbyId(organid)));
@@ -223,7 +212,6 @@ public class Data implements DataService
                                   @HeaderParam("documents") boolean documents,
                                   @HeaderParam("organid") int organid)
     {
-        boolean done = true;
         try
         {
             insert.insertIntoMessagesTable(new Message(getUserById(userid),getOrgannisationbyId(organid),subject,message,arriveTime,deadline,false,documents));
