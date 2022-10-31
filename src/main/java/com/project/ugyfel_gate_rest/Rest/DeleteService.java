@@ -1,8 +1,7 @@
 package com.project.ugyfel_gate_rest.Rest;
 
-import javax.ws.rs.HeaderParam;
-import javax.ws.rs.core.Response;
-
+import javax.ws.rs.*;
+import javax.ws.rs.core.*;
 public interface DeleteService
 {
     Response deleteUser(@HeaderParam("userName") String userName,

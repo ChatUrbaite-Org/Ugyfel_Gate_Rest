@@ -4,11 +4,8 @@ import com.project.ugyfel_gate_rest.Classes.*;
 import com.project.ugyfel_gate_rest.DataBase.Insert_Into_DataBase;
 import com.project.ugyfel_gate_rest.Enums.Nationality;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.HeaderParam;
-import javax.ws.rs.Path;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import javax.ws.rs.*;
+import javax.ws.rs.core.*;
 import java.util.Date;
 
 import static com.project.ugyfel_gate_rest.DataBase.GetObject.*;

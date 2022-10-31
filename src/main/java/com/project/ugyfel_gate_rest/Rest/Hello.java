@@ -1,10 +1,6 @@
 package com.project.ugyfel_gate_rest.Rest;
-
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-
+import javax.ws.rs.*;
+import javax.ws.rs.core.*;
 // Plain old Java Object it does not extend as class or implements
 // an interface
 

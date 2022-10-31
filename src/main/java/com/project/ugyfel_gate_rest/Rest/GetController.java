@@ -5,11 +5,10 @@ import com.project.ugyfel_gate_rest.Classes.Organisation;
 import com.project.ugyfel_gate_rest.Classes.User;
 import com.project.ugyfel_gate_rest.DataBase.GetArray;
 import com.project.ugyfel_gate_rest.DataBase.GetJSON;
-import org.json.JSONObject;
 
 import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import javax.ws.rs.core.*;
+import org.json.JSONObject;
 
 import static com.project.ugyfel_gate_rest.DataBase.GetObject.getUserEmail;
 import static com.project.ugyfel_gate_rest.DataBase.GetObject.getUserUserName;
@@ -23,7 +22,6 @@ public class GetController implements GetService
     @Path("/user")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes ("application/c-www-form-urlencoded")
     public Response getUserData(@HeaderParam("userName") String username, @HeaderParam("token") String token) {
         JSONObject resp = new JSONObject();
         resp.put("Username",username);
@@ -47,7 +45,6 @@ public class GetController implements GetService
     @Path("/user")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes ("application/c-www-form-urlencoded")
     public Response getUserDataEmail(@HeaderParam("Email") String email, @HeaderParam("token") String token) {
         JSONObject resp = new JSONObject();
         resp.put("Username",email);
@@ -70,7 +67,6 @@ public class GetController implements GetService
     @Override
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes ("application/c-www-form-urlencoded")
     @Path("/users")
     public Response getUsers()
     {
@@ -83,7 +79,6 @@ public class GetController implements GetService
     @Override
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes ("application/c-www-form-urlencoded")
     @Path("/locations")
     public Response getLocations()
     {
@@ -96,7 +91,6 @@ public class GetController implements GetService
     @Override
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes ("application/c-www-form-urlencoded")
     @Path("/organisations")
     public Response getOrganisations()
     {
@@ -109,7 +103,6 @@ public class GetController implements GetService
     @Override
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes ("application/c-www-form-urlencoded")
     @Path("/idcards")
     public Response getIdCards()
     {
@@ -122,7 +115,6 @@ public class GetController implements GetService
     @Override
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes ("application/c-www-form-urlencoded")
     @Path("/locationcards")
     public Response getLocationCards()
     {
@@ -135,7 +127,6 @@ public class GetController implements GetService
     @Override
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes ("application/c-www-form-urlencoded")
     @Path("/driverslicenses")
     public Response getDriversLicenses()
     {

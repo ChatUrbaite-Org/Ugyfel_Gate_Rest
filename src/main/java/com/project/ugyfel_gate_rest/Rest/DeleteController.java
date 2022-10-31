@@ -3,10 +3,9 @@ package com.project.ugyfel_gate_rest.Rest;
 import com.project.ugyfel_gate_rest.DataBase.DeleteData;
 import com.project.ugyfel_gate_rest.DataBase.GetId;
 import com.project.ugyfel_gate_rest.DataBase.GetObject;
+import javax.ws.rs.*;
+import javax.ws.rs.core.*;
 
-import javax.ws.rs.HeaderParam;
-import javax.ws.rs.Path;
-import javax.ws.rs.core.Response;
 @Path("/delete")
 public class DeleteController implements DeleteService
 {
