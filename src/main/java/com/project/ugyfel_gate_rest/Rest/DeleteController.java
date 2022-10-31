@@ -16,7 +16,7 @@ public class DeleteController implements DeleteService
                                @HeaderParam("token") String token)
     {
         try{
-            DeleteData.deleteUser(GetId.getUserId(GetObject.getUser(userName,token)));
+            DeleteData.deleteUser(GetId.getUserId(GetObject.getUserUserName(userName,token)));
             return Response.ok().build();
         }catch (Exception e)
         {

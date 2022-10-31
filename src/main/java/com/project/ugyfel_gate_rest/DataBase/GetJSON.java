@@ -1,7 +1,6 @@
-package com.project.ugyfel_gate_rest.Rest;
+package com.project.ugyfel_gate_rest.DataBase;
 
 import com.project.ugyfel_gate_rest.Classes.*;
-import com.project.ugyfel_gate_rest.DataBase.GetObject;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
@@ -98,9 +97,27 @@ public class GetJSON
         orglocation.put("Expiry Date",location.getRegistration_date());
         return orglocation;
     }
-    public static @NotNull JSONObject getJSONData(String Username, String MD5Password)
+    public static @NotNull JSONObject getJSONDataUserName(String Username, String MD5Password)
     {
-        User user = GetObject.getUser(Username,MD5Password);
+        User user = GetObject.getUserUserName(Username,MD5Password);
+        JSONObject userO = new JSONObject();
+
+        userO.put("Name", Objects.requireNonNull(user).getName());
+        userO.put("User Name",user.getUsername());
+        userO.put("Email",user.getEmail());
+        userO.put("Girl Name",user.getGirlName());
+        userO.put("Sex",user.getSex());
+        userO.put("BirthDate",user.getBirthdate());
+        userO.put("Nationality",user.getNationality());
+        userO.put("ID Card", getJSONIDCard(user));
+        userO.put("Location Card",getJSONLocationCard(user));
+        userO.put("Drivers License",getJSONDriversLicense(user));
+        return userO;
+
+    }
+    public static @NotNull JSONObject getJSONDataEmail(String Email, String MD5Password)
+    {
+        User user = GetObject.getUserEmail(Email,MD5Password);
         JSONObject userO = new JSONObject();
 
         userO.put("Name", Objects.requireNonNull(user).getName());

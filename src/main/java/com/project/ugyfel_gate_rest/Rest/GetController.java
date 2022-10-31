@@ -4,13 +4,15 @@ import com.project.ugyfel_gate_rest.Classes.Location;
 import com.project.ugyfel_gate_rest.Classes.Organisation;
 import com.project.ugyfel_gate_rest.Classes.User;
 import com.project.ugyfel_gate_rest.DataBase.GetArray;
+import com.project.ugyfel_gate_rest.DataBase.GetJSON;
 import org.json.JSONObject;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import static com.project.ugyfel_gate_rest.DataBase.GetObject.getUser;
+import static com.project.ugyfel_gate_rest.DataBase.GetObject.getUserEmail;
+import static com.project.ugyfel_gate_rest.DataBase.GetObject.getUserUserName;
 
 
 @Path("/get")
@@ -27,10 +29,10 @@ public class GetController implements GetService
         resp.put("Username",username);
         resp.put("Token",token);
 
-        if(!token.equals("") && (getUser(username, token) != null))
+        if(!token.equals("") && (getUserUserName(username, token) != null))
         {
             //resp.put("Data", GetJSON.getJSONData("JaniHegedus",MD5.Translate_to_MD5_HASH("Jancsika20"))); //testData
-            resp.put("Data", GetJSON.getJSONData(username,token));
+            resp.put("Data", GetJSON.getJSONDataUserName(username,token));
             return Response.ok(resp.toString()).type(MediaType.APPLICATION_JSON).build();
         }
         else
@@ -38,7 +40,31 @@ public class GetController implements GetService
             resp.put("error","No Token");
         }
         //
-        resp.put("Data", GetJSON.getJSONData(username,token));
+        resp.put("Data", GetJSON.getJSONDataUserName(username,token));
+        return Response.status(Response.Status.UNAUTHORIZED).type(MediaType.APPLICATION_JSON).entity(resp).build();
+    }
+    @Override
+    @Path("/user")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes ("application/c-www-form-urlencoded")
+    public Response getUserDataEmail(@HeaderParam("Email") String email, @HeaderParam("token") String token) {
+        JSONObject resp = new JSONObject();
+        resp.put("Username",email);
+        resp.put("Token",token);
+
+        if(!token.equals("") && (getUserEmail(email, token) != null))
+        {
+            //resp.put("Data", GetJSON.getJSONData("JaniHegedus",MD5.Translate_to_MD5_HASH("Jancsika20"))); //testData
+            resp.put("Data", GetJSON.getJSONDataUserName(email,token));
+            return Response.ok(resp.toString()).type(MediaType.APPLICATION_JSON).build();
+        }
+        else
+        {
+            resp.put("error","No Token");
+        }
+        //
+        resp.put("Data", GetJSON.getJSONDataUserName(email,token));
         return Response.status(Response.Status.UNAUTHORIZED).type(MediaType.APPLICATION_JSON).entity(resp).build();
     }
     @Override

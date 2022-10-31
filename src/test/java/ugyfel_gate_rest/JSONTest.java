@@ -4,7 +4,7 @@ import com.project.ugyfel_gate_rest.Classes.Location;
 import com.project.ugyfel_gate_rest.Classes.Organisation;
 import com.project.ugyfel_gate_rest.Classes.User;
 import com.project.ugyfel_gate_rest.DataBase.GetArray;
-import com.project.ugyfel_gate_rest.Rest.GetJSON;
+import com.project.ugyfel_gate_rest.DataBase.GetJSON;
 import com.project.ugyfel_gate_rest.Classes.MD5;
 import org.junit.Test;
 
@@ -18,7 +18,7 @@ public class JSONTest
     @Test
     public void UserJSONTest() throws NoSuchAlgorithmException
     {
-        GetJSON.getJSONData("JaniHegedus", MD5.Translate_to_MD5_HASH("Jancsika20"));
+        GetJSON.getJSONDataUserName("JaniHegedus", MD5.Translate_to_MD5_HASH("Jancsika20"));
     }
     @Test
     public void LocationJSONTest()

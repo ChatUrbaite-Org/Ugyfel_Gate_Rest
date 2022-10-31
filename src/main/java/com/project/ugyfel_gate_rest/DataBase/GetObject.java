@@ -51,12 +51,26 @@ public class GetObject
         return null;
     }
     @Nullable
-    public static User getUser(String UserName, String MD5Password)
+    public static User getUserUserName(String UserName, String MD5Password)
     {
         ArrayList<User> users = getDataFromUserTable();
         for (User user : users)
         {
             if(Objects.equals(user.getUsername(), UserName)
+                    && Objects.equals(user.getPassword(), MD5Password))
+            {
+                return user;
+            }
+        }
+        return null;
+    }
+    @Nullable
+    public static User getUserEmail(String Email, String MD5Password)
+    {
+        ArrayList<User> users = getDataFromUserTable();
+        for (User user : users)
+        {
+            if(Objects.equals(user.getEmail(), Email)
                     && Objects.equals(user.getPassword(), MD5Password))
             {
                 return user;

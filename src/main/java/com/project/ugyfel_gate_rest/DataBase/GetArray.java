@@ -296,7 +296,7 @@ public class GetArray
     @NotNull
     public static ArrayList<Object> getData(String Username, String MD5Password) {
         ArrayList<Object> objects = new ArrayList<>();
-        User user = GetObject.getUser(Username,MD5Password);
+        User user = GetObject.getUserUserName(Username,MD5Password);
         objects.add(user);
         ID_CARD id_card = GetObject.getID_CARDByUserid(Objects.requireNonNull(user).getId());
         objects.add(id_card);
