@@ -7,26 +7,16 @@ import java.sql.Statement;
 
 public class Create_DataBase_With_Tables
 {
-    /*
     private final String jdbcDriver = LoadMySQL.getDriverName();
     private final String dbAddress = LoadMySQL.getAddress();
     private final String userPass = LoadMySQL.getUserPass();
     private final String dbName = LoadMySQL.getDBName();
     private final String userName = LoadMySQL.getUserName();
     private final String password = LoadMySQL.getPassword();
-    */
-    private final String jdbcDriver = "com.mysql.cj.jdbc.Driver";
-    private final String dbAddress = "jdbc:mysql://localhost:3306/";
-    private final String userPass = "?user=root&password=";
-    private final String dbName = "projekt";
-    private final String userName = "root";
-    private final String password = "";
 
     private Statement statement;
     private Connection con;
-    public Create_DataBase_With_Tables()
-    {
-        new LoadMySQL();
+    public Create_DataBase_With_Tables() {
         try
         {
             Class.forName(jdbcDriver);
@@ -140,7 +130,7 @@ public class Create_DataBase_With_Tables
                 + "id INT(64) NOT NULL AUTO_INCREMENT Primary Key,"
                 + "oname VARCHAR(236),"
                 + "location INT(64),"
-                + "Foreign Key (location) References locations(id) ,"
+                + "Foreign Key (location) References locations(id) ON DELETE Cascade,"
                 + "nationality VARCHAR(236))";
         try
         {
@@ -164,12 +154,12 @@ public class Create_DataBase_With_Tables
         String myTableName = "CREATE TABLE IDCard ("
                 + "id INT(64) NOT NULL AUTO_INCREMENT Primary Key,"
                 + "userid INT(64),"
-                + "FOREIGN KEY (userid)  REFERENCES users(id) ,"
+                + "FOREIGN KEY (userid)  REFERENCES users(id) ON DELETE Cascade,"
                 + "cardNumber VARCHAR(10),"
                 + "can INT(6),"
                 + "fingerprint INT(1),"
                 + "orgid int(64),"
-                + "FOREIGN KEY (orgid) REFERENCES organisations(id), "
+                + "FOREIGN KEY (orgid) REFERENCES organisations(id) ON DELETE Cascade,"
                 + "expirationDate DATE)";
         try
         {
@@ -194,12 +184,12 @@ public class Create_DataBase_With_Tables
         String myTableName = "CREATE TABLE LocationCard ("
                 + "id INT(64) NOT NULL AUTO_INCREMENT Primary Key,"
                 + "userid INT(64),"
-                + "Foreign Key (userid) References users(id) ,"
+                + "Foreign Key (userid) References users(id) ON DELETE Cascade,"
                 + "cardNumber VARCHAR(10),"
                 + "defaultlocation INT(64),"
-                + "Foreign Key (defaultlocation) References locations(id),"
+                + "Foreign Key (defaultlocation) References locations(id) ON DELETE Cascade,"
                 + "residentallocation INT(64),"
-                + "Foreign Key (residentallocation) References locations(id), "
+                + "Foreign Key (residentallocation) References locations(id) ON DELETE Cascade, "
                 + "orgid INT(64), "
                 + "Foreign Key (orgid) References organisations(id)"
                 + ")";
@@ -226,12 +216,12 @@ public class Create_DataBase_With_Tables
         String myTableName = "CREATE TABLE DriversLicense ("
                 + "id INT(64) NOT NULL AUTO_INCREMENT Primary Key,"
                 + "uid INT(64),"
-                + "Foreign Key (uid) References users(id) ,"
+                + "Foreign Key (uid) References users(id) ON DELETE Cascade,"
                 + "cardNumber VARCHAR(10),"
                 + "orgid INT(64),"
                 + "acquireDate DATE,"
                 + "expirationDate DATE,"
-                + "Foreign Key (orgid) References organisations(id)"
+                + "Foreign Key (orgid) References organisations(id) ON DELETE Cascade "
                 + ")";
         try
         {
@@ -256,11 +246,11 @@ public class Create_DataBase_With_Tables
         String myTableName = "CREATE TABLE Messages ("
                 + "id INT(64) NOT NULL AUTO_INCREMENT Primary Key,"
                 + "uid INT(64),"
-                + "Foreign Key (uid) References users(id) ,"
+                + "Foreign Key (uid) References users(id) ON DELETE Cascade,"
                 + "Subject VARCHAR(10),"
                 + "message VARCHAR(236),"
                 + "orgid INT(64),"
-                + "Foreign Key (orgid) References organisations(id),"
+                + "Foreign Key (orgid) References organisations(id) ON DELETE Cascade,"
                 + "arriveTime DATE,"
                 + "deadline DATE,"
                 + "isRead INT(1),"

@@ -18,11 +18,12 @@ public class DataController implements DataService
 {
     Insert_Into_DataBase insert = new Insert_Into_DataBase();
 
+    @Override
     @Path("/get")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes ("application/c-www-form-urlencoded")
-    public Response getData(@HeaderParam("UserName") String username, @HeaderParam("Token") String token) {
+    public Response getData(@HeaderParam("userName") String username, @HeaderParam("token") String token) {
         JSONObject resp = new JSONObject();
         resp.put("Username",username);
         resp.put("Token",token);
@@ -223,4 +224,9 @@ public class DataController implements DataService
         }
 
     }
+    /*
+    public Response deleteUser(@HeaderParam("userName") String userName)
+    {
+
+    }*/
 }

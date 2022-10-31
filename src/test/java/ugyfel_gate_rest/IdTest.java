@@ -10,12 +10,11 @@ import org.junit.Test;
 
 import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
-import java.sql.SQLException;
 
 import static junit.framework.Assert.assertEquals;
 
 
-public class DataControllerBaseTest
+public class IdTest
 {
     Insert_Into_DataBase insert = new Insert_Into_DataBase();
 
@@ -33,58 +32,8 @@ public class DataControllerBaseTest
     Location_CARD location_card1 = new Location_CARD("123345678A",location,user,organisation);
     Drivers_License driversLicense = new Drivers_License(user,"sdadsa",Date.valueOf("2021-07-01"),Date.valueOf("2031-07-01"),organisation);
     Message message = new Message(user,organisation,"Befizetés","Önnek egy befizetetlen számlája van!",Date.valueOf("2022-10-26"),Date.valueOf("2022-11-26"),false,false);
-    public DataControllerBaseTest() throws NoSuchAlgorithmException {
-        new Create_DataBase_With_Tables();
-        new LoadMySQL();
-    }
+    public IdTest() throws NoSuchAlgorithmException {
 
-    @Test
-    public void UserTest() throws SQLException, NoSuchAlgorithmException {
-
-        insert.insertIntoUserTable(user);
-        insert.insertIntoUserTable(user1);
-        insert.insertIntoUserTable(user2);
-        assertEquals(3, GetArray.getDataFromUserTable().size());
-    }
-    @Test
-    public void LocationTest() throws SQLException
-    {
-        insert.insertIntoLocationsTable(location);
-        insert.insertIntoLocationsTable(location1);
-        GetArray.getDataFromLocationsTable();
-        assertEquals(2, GetArray.getDataFromLocationsTable().size());
-        assertEquals(1, GetId.getlocationID(location));
-        assertEquals(2, GetId.getlocationID(location1));
-    }
-    @Test
-    public void OrgTest () throws SQLException
-    {
-        insert.insertIntoOrganisationsTable(organisation);
-        insert.insertIntoOrganisationsTable(organisation1);
-        assertEquals(2, GetArray.getDataFromOrganisationsTable().size());
-    }
-    @Test
-    public void LocationCardTest() throws SQLException, NoSuchAlgorithmException {
-        insert.insertIntoLocationCardTable(location_card);
-        insert.insertIntoLocationCardTable(location_card1);
-        assertEquals(2,GetArray.getDataFromLocationCardTable().size());
-    }
-    @Test
-    public void DriversLicenseTest() throws SQLException, NoSuchAlgorithmException {
-        insert.insertIntoDriversLicenseTable(driversLicense);
-        assertEquals(1,GetArray.getDataFromDriversLicenseTable().size());
-    }
-    @Test
-    public void MessagesTest() throws SQLException, NoSuchAlgorithmException {
-        insert.insertIntoMessagesTable(message);
-        assertEquals(1,GetArray.getDataFromMessagesTable().size());
-    }
-    @Test
-    public void IDCTest() throws SQLException, NoSuchAlgorithmException {
-        insert.insertIntoIDCardTable(idCard);
-        insert.insertIntoIDCardTable(idCard1);
-        insert.insertIntoIDCardTable(idCard2);
-        assertEquals(3, GetArray.getDataFromIDCardTable().size());
     }
 
     @Test
@@ -97,7 +46,6 @@ public class DataControllerBaseTest
     public void UserIdTest() {
         assertEquals(1,GetId.getUserId(user));
         assertEquals(2,GetId.getUserId(user1));
-        assertEquals(3,GetId.getUserId(user2));
     }
     @Test
     public void OrgIdTest()
@@ -105,4 +53,6 @@ public class DataControllerBaseTest
         assertEquals(1,GetId.getOrgId(organisation));
         assertEquals(2,GetId.getOrgId(organisation1));
     }
+
+
 }

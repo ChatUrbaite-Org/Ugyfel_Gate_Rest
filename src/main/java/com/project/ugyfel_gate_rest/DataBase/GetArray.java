@@ -5,29 +5,19 @@ import com.project.ugyfel_gate_rest.Enums.Nationality;
 import com.project.ugyfel_gate_rest.Enums.Sex;
 import org.jetbrains.annotations.NotNull;
 
-import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class GetArray
 {
-    /*
-    private final String jdbcDriver = LoadMySQL.getDriverName();
-    private final String dbAddress = LoadMySQL.getAddress();
-    private final String userPass = LoadMySQL.getUserPass();
-    private final String dbName = LoadMySQL.getDBName();
-    private final String userName = LoadMySQL.getUserName();
-    private final String password = LoadMySQL.getPassword();
-    */
-    private static final String jdbcDriver = "com.mysql.cj.jdbc.Driver";
-    private static final String dbAddress = "jdbc:mysql://localhost:3306/";
-    private static final String userPass = "?user=root&password=";
-    private static final String dbName = "projekt";
-    private static final String userName = "root";
-    private static final String password = "";
+    private static final String jdbcDriver = LoadMySQL.getDriverName();
+    private static final String dbAddress = LoadMySQL.getAddress();
+    private static final String userPass = LoadMySQL.getUserPass();
+    private static final String dbName = LoadMySQL.getDBName();
+    private static final String userName = LoadMySQL.getUserName();
+    private static final String password = LoadMySQL.getPassword();
 
-    private Connection con;
     public GetArray()
     {
         new LoadMySQL();
@@ -35,7 +25,7 @@ public class GetArray
         try
         {
             Class.forName(jdbcDriver);
-            con = DriverManager.getConnection(dbAddress + dbName, userName, password);
+            Connection con = DriverManager.getConnection(dbAddress + dbName, userName, password);
             try
             {
                 new LoadMySQL();
@@ -304,11 +294,11 @@ public class GetArray
         }
     }
     @NotNull
-    public static ArrayList<Object> getData(String Username, String MD5Password) throws NoSuchAlgorithmException {
+    public static ArrayList<Object> getData(String Username, String MD5Password) {
         ArrayList<Object> objects = new ArrayList<>();
         User user = GetObject.getUser(Username,MD5Password);
         objects.add(user);
-        ID_CARD id_card = GetObject.getID_CARDByUserid(user.getId());
+        ID_CARD id_card = GetObject.getID_CARDByUserid(Objects.requireNonNull(user).getId());
         objects.add(id_card);
         Location_CARD location_card = GetObject.getLocation_CARDByUserid(user.getId());
         objects.add(location_card);

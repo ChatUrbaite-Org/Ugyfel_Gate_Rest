@@ -2,10 +2,8 @@ package com.project.ugyfel_gate_rest.DataBase;
 
 import com.project.ugyfel_gate_rest.Classes.*;
 import com.project.ugyfel_gate_rest.Enums.Nationality;
-import com.project.ugyfel_gate_rest.MD5;
 import org.jetbrains.annotations.NotNull;
 
-import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -15,10 +13,10 @@ public class Insert_Into_DataBase
     {
         new LoadMySQL();
     }
-    public void insertIntoUserTable(@NotNull User user) throws SQLException, NoSuchAlgorithmException {
+    public void insertIntoUserTable(@NotNull User user) throws SQLException {
         String Uname = user.getName();
         String UserName =user.getUsername();
-        String Password = MD5.Translate_to_MD5_HASH(user.getPassword());
+        String Password = user.getPassword();
         String Email = String.valueOf(user.getEmail());
         Date BirthDate= (Date) user.getBirthdate();
         String BirthPlace=user.getBirthplace();
@@ -194,7 +192,7 @@ public class Insert_Into_DataBase
             System.out.println("Record already Created");
         }
     }
-    public void insertIntoIDCardTable(@NotNull ID_CARD id_card) throws SQLException, NoSuchAlgorithmException {
+    public void insertIntoIDCardTable(@NotNull ID_CARD id_card) throws SQLException {
         ArrayList<ID_CARD> usedlocations = GetArray.getDataFromIDCardTable();
         ArrayList<String> alltogethers =new ArrayList<>();
         for (ID_CARD usedid : usedlocations)
@@ -250,7 +248,7 @@ public class Insert_Into_DataBase
             System.out.println("Record already Created");
         }
     }
-    public void insertIntoLocationCardTable(@NotNull Location_CARD location_card) throws SQLException, NoSuchAlgorithmException {
+    public void insertIntoLocationCardTable(@NotNull Location_CARD location_card) throws SQLException {
         ArrayList<Location_CARD> usedcards = GetArray.getDataFromLocationCardTable();
         ArrayList<String> alltogethers =new ArrayList<>();
         for (Location_CARD card : usedcards)
@@ -336,7 +334,7 @@ public class Insert_Into_DataBase
             System.out.println("Record already Created");
         }
     }
-    public void insertIntoDriversLicenseTable(@NotNull Drivers_License driversLicense) throws SQLException, NoSuchAlgorithmException {
+    public void insertIntoDriversLicenseTable(@NotNull Drivers_License driversLicense) throws SQLException {
         ArrayList<Drivers_License> usedlocations = GetArray.getDataFromDriversLicenseTable();
         ArrayList<String> alltogethers =new ArrayList<>();
         for (Drivers_License drivers_license : usedlocations)
@@ -386,7 +384,7 @@ public class Insert_Into_DataBase
             System.out.println("Record already Created");
         }
     }
-    public void insertIntoMessagesTable(@NotNull Message message) throws SQLException, NoSuchAlgorithmException {
+    public void insertIntoMessagesTable(@NotNull Message message) throws SQLException {
         ArrayList<Message> oldmessages = GetArray.getDataFromMessagesTable();
         ArrayList<String> alltogethers =new ArrayList<>();
         for (Message message0 : oldmessages)

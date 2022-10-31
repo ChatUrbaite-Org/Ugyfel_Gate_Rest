@@ -1,13 +1,38 @@
 <component name="InspectionProjectProfileManager">
   <profile version="1.0">
     <option name="myName" value="Project Default" />
+    <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <Languages>
+        <language minSize="64" name="Java" />
+      </Languages>
+    </inspection_tool>
     <inspection_tool class="IncorrectHttpHeaderInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="customHeaders">
         <set>
           <option value="X-Auth-Token" />
+          <option value="UserName" />
+          <option value="Token" />
+          <option value="name" />
+          <option value="email" />
+          <option value="birthPlace" />
+          <option value="birthDate" />
+          <option value="sex" />
+          <option value="isMom" />
+          <option value="girlName" />
+          <option value="natinality" />
+          <option value="country" />
+          <option value="county" />
+          <option value="city" />
+          <option value="street" />
+          <option value="house_number" />
+          <option value="registrationDate" />
+          <option value="houseNumber" />
+          <option value="expirationDate" />
         </set>
       </option>
     </inspection_tool>
+    <inspection_tool class="InstantiationOfUtilityClass" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="UastIncorrectHttpHeaderInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="VulnerableLibrariesLocal" enabled="false" level="WARNING" enabled_by_default="false" />
   </profile>
 </component>

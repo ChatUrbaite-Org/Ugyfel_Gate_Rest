@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/src/main/java/com/project/ugyfel_gate_rest/DataBase/Create_DataBase_With_Tables.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/project/ugyfel_gate_rest/DataBase/DeleteData.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/project/ugyfel_gate_rest/DataBase/Insert_Into_DataBase.java" dialect="GenericSQL" />
+  </component>
+</project>

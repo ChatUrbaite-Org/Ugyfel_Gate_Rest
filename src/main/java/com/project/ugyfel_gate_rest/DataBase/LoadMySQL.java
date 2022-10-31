@@ -10,12 +10,12 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 
 public class LoadMySQL
-{   public static String DriverName;
-    public static String Address;
-    public static String UserPass;
-    public static String DBName;
-    public static String UserName;
-    public static String Password;
+{   public static String DriverName = "com.mysql.cj.jdbc.Driver";
+    public static String Address = "jdbc:mysql://localhost:3306/";
+    public static String UserPass  = "?user=root&password=";
+    public static String DBName = "projekt";
+    public static String UserName = "root";
+    public static String Password = "";
 
     public static String getDriverName() {
         return DriverName;
