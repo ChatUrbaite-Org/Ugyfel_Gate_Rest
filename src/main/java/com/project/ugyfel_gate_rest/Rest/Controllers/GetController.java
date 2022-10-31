@@ -1,15 +1,17 @@
-package com.project.ugyfel_gate_rest.Rest;
+package com.project.ugyfel_gate_rest.Rest.Controllers;
 
-import com.project.ugyfel_gate_rest.Classes.Location;
-import com.project.ugyfel_gate_rest.Classes.Organisation;
-import com.project.ugyfel_gate_rest.Classes.User;
-import com.project.ugyfel_gate_rest.DataBase.GetArray;
 import com.project.ugyfel_gate_rest.DataBase.GetJSON;
-
-import javax.ws.rs.*;
-import javax.ws.rs.core.*;
+import com.project.ugyfel_gate_rest.Rest.GetService;
 import org.json.JSONObject;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+
+import static com.project.ugyfel_gate_rest.DataBase.GetJSON.*;
 import static com.project.ugyfel_gate_rest.DataBase.GetObject.getUserEmail;
 import static com.project.ugyfel_gate_rest.DataBase.GetObject.getUserUserName;
 
@@ -19,7 +21,7 @@ public class GetController implements GetService
 {
 
     @Override
-    @Path("/user")
+    @Path("/usern")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getUserData(@HeaderParam("userName") String username, @HeaderParam("token") String token) {
@@ -42,7 +44,7 @@ public class GetController implements GetService
         return Response.status(Response.Status.UNAUTHORIZED).type(MediaType.APPLICATION_JSON).entity(resp).build();
     }
     @Override
-    @Path("/user")
+    @Path("/usere")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getUserDataEmail(@HeaderParam("Email") String email, @HeaderParam("token") String token) {
@@ -70,11 +72,7 @@ public class GetController implements GetService
     @Path("/users")
     public Response getUsers()
     {
-        for(User user : GetArray.getDataFromUserTable())
-        {
-            return Response.ok(GetJSON.getJSONUser(user).toString()).type(MediaType.APPLICATION_JSON).build();
-        }
-        return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        return Response.ok(getJSONUsers().toString()).type(MediaType.APPLICATION_JSON).build();
     }
     @Override
     @GET
@@ -82,11 +80,7 @@ public class GetController implements GetService
     @Path("/locations")
     public Response getLocations()
     {
-        for(Location user : GetArray.getDataFromLocationsTable())
-        {
-            return Response.ok(GetJSON.getJSONDLocation(user).toString()).type(MediaType.APPLICATION_JSON).build();
-        }
-        return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        return Response.ok(getJSONLocations().toString()).type(MediaType.APPLICATION_JSON).build();
     }
     @Override
     @GET
@@ -94,11 +88,8 @@ public class GetController implements GetService
     @Path("/organisations")
     public Response getOrganisations()
     {
-        for(Organisation org : GetArray.getDataFromOrganisationsTable())
-        {
-            return Response.ok(GetJSON.getJSONORG(org).toString()).type(MediaType.APPLICATION_JSON).build();
-        }
-        return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+
+        return Response.ok(getJSONOrganisation().toString()).type(MediaType.APPLICATION_JSON).build();
     }
     @Override
     @GET
@@ -106,11 +97,8 @@ public class GetController implements GetService
     @Path("/idcards")
     public Response getIdCards()
     {
-        for(User user : GetArray.getDataFromUserTable())
-        {
-            return Response.ok(GetJSON.getJSONIDCard(user).toString()).type(MediaType.APPLICATION_JSON).build();
-        }
-        return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+
+        return Response.ok(getJSONIDCards().toString()).type(MediaType.APPLICATION_JSON).build();
     }
     @Override
     @GET
@@ -118,11 +106,8 @@ public class GetController implements GetService
     @Path("/locationcards")
     public Response getLocationCards()
     {
-        for(User user : GetArray.getDataFromUserTable())
-        {
-            return Response.ok(GetJSON.getJSONLocationCard(user).toString()).type(MediaType.APPLICATION_JSON).build();
-        }
-        return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+
+        return Response.ok(getJSONLocationCards().toString()).type(MediaType.APPLICATION_JSON).build();
     }
     @Override
     @GET
@@ -130,10 +115,7 @@ public class GetController implements GetService
     @Path("/driverslicenses")
     public Response getDriversLicenses()
     {
-        for(User user : GetArray.getDataFromUserTable())
-        {
-            return Response.ok(GetJSON.getJSONDriversLicense(user).toString()).type(MediaType.APPLICATION_JSON).build();
-        }
-        return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+
+        return Response.ok(getJSONDriversLicenses().toString()).type(MediaType.APPLICATION_JSON).build();
     }
 }

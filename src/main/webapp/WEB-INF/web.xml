@@ -4,20 +4,17 @@
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
     <!-- Jersey Servlet configurations -->
-    <display-name>Archetype Created Web Application</display-name>
-
     <servlet>
-        <servlet-name>jersey-serlvet</servlet-name>
+        <servlet-name>Jersey REST Service</servlet-name>
         <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
         <init-param>
-            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-name>com.sun.jersey.config.property.packages</param-name>
             <param-value>com.project</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>jersey-serlvet</servlet-name>
+        <servlet-name>Jersey REST Service</servlet-name>
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
     <!-- Jersey Servlet configurations -->

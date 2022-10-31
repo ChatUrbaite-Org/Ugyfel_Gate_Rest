@@ -1,8 +1,10 @@
-package com.project.ugyfel_gate_rest.Rest;
+package com.project.ugyfel_gate_rest.Rest.Controllers;
 
 import com.project.ugyfel_gate_rest.DataBase.DeleteData;
 import com.project.ugyfel_gate_rest.DataBase.GetId;
 import com.project.ugyfel_gate_rest.DataBase.GetObject;
+import com.project.ugyfel_gate_rest.Rest.DeleteService;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 

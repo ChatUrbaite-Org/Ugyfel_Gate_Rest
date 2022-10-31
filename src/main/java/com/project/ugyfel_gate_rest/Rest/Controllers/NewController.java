@@ -1,8 +1,9 @@
-package com.project.ugyfel_gate_rest.Rest;
+package com.project.ugyfel_gate_rest.Rest.Controllers;
 
 import com.project.ugyfel_gate_rest.Classes.*;
 import com.project.ugyfel_gate_rest.DataBase.Insert_Into_DataBase;
 import com.project.ugyfel_gate_rest.Enums.Nationality;
+import com.project.ugyfel_gate_rest.Rest.NewService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;

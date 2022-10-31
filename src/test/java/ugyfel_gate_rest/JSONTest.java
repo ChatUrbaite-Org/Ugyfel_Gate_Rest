@@ -10,6 +10,8 @@ import org.junit.Test;
 
 import java.security.NoSuchAlgorithmException;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class JSONTest
 {
     User user = GetArray.getDataFromUserTable().get(2);
@@ -44,5 +46,9 @@ public class JSONTest
     public void DriversLicenseJSONTest()
     {
         GetJSON.getJSONDriversLicense(user);
+    }
+    @Test
+    public void UsersJSONTest() {
+        assertEquals(3,GetJSON.getJSONUsers().length());
     }
 }

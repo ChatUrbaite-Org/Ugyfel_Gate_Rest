@@ -1,4 +1,4 @@
-package com.project.ugyfel_gate_rest.Rest;
+package com.project.ugyfel_gate_rest.Rest.Controllers;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 // Plain old Java Object it does not extend as class or implements

@@ -12,7 +12,6 @@ public class GetJSON
     {
         JSONObject id_cardO = new JSONObject();
 
-        id_cardO.put("ID",user.getId());
         id_cardO.put("Name", user.getName());
         id_cardO.put("Girl Name",user.getGirlName());
         id_cardO.put("Email",user.getEmail());
@@ -101,7 +100,7 @@ public class GetJSON
     {
         User user = GetObject.getUserUserName(Username,MD5Password);
         JSONObject userO = new JSONObject();
-
+        userO.put("ID", Objects.requireNonNull(user).getId());
         userO.put("Name", Objects.requireNonNull(user).getName());
         userO.put("User Name",user.getUsername());
         userO.put("Email",user.getEmail());
@@ -133,4 +132,59 @@ public class GetJSON
         return userO;
 
     }
+    public static @NotNull JSONObject getJSONUsers()
+    {
+        JSONObject object = new JSONObject();
+        for(User user : GetArray.getDataFromUserTable())
+        {
+            object.put("User"+user.getId(),GetJSON.getJSONUser(user));
+        }
+        return object;
+    }
+    public static @NotNull JSONObject getJSONLocations()
+    {
+        JSONObject object = new JSONObject();
+        for(Location location : GetArray.getDataFromLocationsTable())
+        {
+            object.put("Location"+location.getId(),GetJSON.getJSONDLocation(location));
+        }
+        return object;
+    }
+    public static @NotNull JSONObject getJSONOrganisation()
+    {
+        JSONObject object = new JSONObject();
+        for(Organisation org : GetArray.getDataFromOrganisationsTable())
+        {
+            object.put("Organisation"+org.getId(),GetJSON.getJSONORG(org));
+        }
+        return object;
+    }
+    public static @NotNull JSONObject getJSONIDCards()
+    {
+        JSONObject object = new JSONObject();
+        for(User user : GetArray.getDataFromUserTable())
+        {
+            object.put("ID Card"+ Objects.requireNonNull(GetObject.getID_CARDByUserid(user.getId())).getId(),GetJSON.getJSONIDCard(user));
+        }
+        return object;
+    }
+    public static @NotNull JSONObject getJSONLocationCards()
+    {
+        JSONObject object = new JSONObject();
+        for(User user : GetArray.getDataFromUserTable())
+        {
+            object.put("Location Card"+ Objects.requireNonNull(GetObject.getLocation_CARDByUserid(user.getId())).getId(),GetJSON.getJSONLocationCard(user));
+        }
+        return object;
+    }
+    public static @NotNull JSONObject getJSONDriversLicenses()
+    {
+        JSONObject object = new JSONObject();
+        for(User user : GetArray.getDataFromUserTable())
+        {
+            object.put("Drivers License"+ Objects.requireNonNull(GetObject.getDriversLicenseByUserid(user.getId())).getId(),GetJSON.getJSONDriversLicense(user));
+        }
+        return object;
+    }
+
 }
