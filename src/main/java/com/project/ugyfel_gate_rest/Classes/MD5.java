@@ -1,4 +1,4 @@
-package com.project.ugyfel_gate_rest;
+package com.project.ugyfel_gate_rest.Classes;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -8,7 +8,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class MD5
 {
-    public static String Translate_to_MD5_HASH(@NotNull String password) throws NoSuchAlgorithmException {
+    public static @NotNull String Translate_to_MD5_HASH(@NotNull String password) throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("MD5");
         md.update(password.getBytes());
         byte[] digest = md.digest();

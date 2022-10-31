@@ -1,4 +1,4 @@
-package com.project.ugyfel_gate_rest;
+package com.project.ugyfel_gate_rest.Rest;
 
 import com.project.ugyfel_gate_rest.Classes.*;
 import com.project.ugyfel_gate_rest.DataBase.GetObject;
@@ -9,7 +9,24 @@ import java.util.Objects;
 
 public class GetJSON
 {
-    public static @NotNull JSONObject getJSONIDCARD(@NotNull User user)
+    public static @NotNull JSONObject getJSONUser(@NotNull User user)
+    {
+        JSONObject id_cardO = new JSONObject();
+
+        id_cardO.put("ID",user.getId());
+        id_cardO.put("Name", user.getName());
+        id_cardO.put("Girl Name",user.getGirlName());
+        id_cardO.put("Email",user.getEmail());
+        id_cardO.put("User Name",user.getUsername());
+        id_cardO.put("Token",user.getPassword());
+        id_cardO.put("Birth Date",user.getBirthdate());
+        id_cardO.put("Sex",user.getSex());
+        id_cardO.put("Is Mom",user.isMom());
+        id_cardO.put("Nationality",user.getNationality());
+        id_cardO.put("Active",user.isActive());
+        return id_cardO;
+    }
+    public static @NotNull JSONObject getJSONIDCard(@NotNull User user)
     {
         ID_CARD id_card = GetObject.getID_CARDByUserid(user.getId());
         JSONObject id_cardO = new JSONObject();
@@ -93,7 +110,7 @@ public class GetJSON
         userO.put("Sex",user.getSex());
         userO.put("BirthDate",user.getBirthdate());
         userO.put("Nationality",user.getNationality());
-        userO.put("ID Card",getJSONIDCARD(user));
+        userO.put("ID Card", getJSONIDCard(user));
         userO.put("Location Card",getJSONLocationCard(user));
         userO.put("Drivers License",getJSONDriversLicense(user));
         return userO;

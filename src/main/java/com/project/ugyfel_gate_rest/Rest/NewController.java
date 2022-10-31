@@ -1,48 +1,24 @@
-package com.project.ugyfel_gate_rest;
+package com.project.ugyfel_gate_rest.Rest;
 
 import com.project.ugyfel_gate_rest.Classes.*;
 import com.project.ugyfel_gate_rest.DataBase.Insert_Into_DataBase;
 import com.project.ugyfel_gate_rest.Enums.Nationality;
-import org.json.JSONObject;
 
-import javax.ws.rs.*;
+import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
+import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Date;
 
 import static com.project.ugyfel_gate_rest.DataBase.GetObject.*;
-
-
-@Path("/data")
-public class DataController implements DataService
+import static com.project.ugyfel_gate_rest.DataBase.GetObject.getOrgannisationbyId;
+@Path("/new")
+public class NewController implements NewService
 {
     Insert_Into_DataBase insert = new Insert_Into_DataBase();
-
+    @Path("/user")
     @Override
-    @Path("/get")
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes ("application/c-www-form-urlencoded")
-    public Response getData(@HeaderParam("userName") String username, @HeaderParam("token") String token) {
-        JSONObject resp = new JSONObject();
-        resp.put("Username",username);
-        resp.put("Token",token);
-
-        if(!token.equals("") && (getUser(username, token) != null))
-        {
-            //resp.put("Data", GetJSON.getJSONData("JaniHegedus",MD5.Translate_to_MD5_HASH("Jancsika20")));
-            resp.put("Data", GetJSON.getJSONData(username,token));
-            return Response.ok(resp.toString()).type(MediaType.APPLICATION_JSON).build();
-        }
-        else
-        {
-            resp.put("error","No Token");
-        }
-        //
-        resp.put("Data", GetJSON.getJSONData(username,token));
-        return Response.status(Response.Status.UNAUTHORIZED).type(MediaType.APPLICATION_JSON).entity(resp).build();
-    }
-    @Path("/new/user")
     @GET
     public Response createNewUser(@HeaderParam("name") String name,
                                   @HeaderParam("userName") String username,
@@ -66,7 +42,8 @@ public class DataController implements DataService
         }
 
     }
-    @Path("/new/DLocation")
+    @Path("/DLocation")
+    @Override
     @GET
     public Response createNewDLocation(@HeaderParam("country") String country,
                                        @HeaderParam("county") String county,
@@ -87,7 +64,8 @@ public class DataController implements DataService
         }
 
     }
-    @Path("/new/RLocation")
+    @Path("/RLocation")
+    @Override
     @GET
     public Response createNewRLocation(@HeaderParam("country") String country,
                                        @HeaderParam("county") String county,
@@ -109,7 +87,8 @@ public class DataController implements DataService
         }
 
     }
-    @Path("/new/Organisation")
+    @Path("/Organisation")
+    @Override
     @GET
     public Response createNewOrganisation(@HeaderParam("name") String name,
                                           @HeaderParam("locid") int locid,
@@ -117,7 +96,7 @@ public class DataController implements DataService
     {
         try
         {
-            insert.insertIntoOrganisationsTable(new Organisation(name, getLocationById(locid),Nationality.valueOf(nationality)));
+            insert.insertIntoOrganisationsTable(new Organisation(name, getLocationById(locid), Nationality.valueOf(nationality)));
             return Response.status(Response.Status.CREATED).type(MediaType.APPLICATION_JSON).build();
         }
         catch (Exception ex)
@@ -126,7 +105,8 @@ public class DataController implements DataService
         }
 
     }
-    @Path("/new/IDCard")
+    @Path("/IDCard")
+    @Override
     @GET
     public Response createNewIDCard(@HeaderParam("can_number") int can_number,
                                     @HeaderParam("userid") int userid,
@@ -147,7 +127,8 @@ public class DataController implements DataService
         }
 
     }
-    @Path("/new/LocationCard")
+    @Path("/LocationCard")
+    @Override
     @GET
     public Response createLocationCard(@HeaderParam("loc_Id") String loc_Id,
                                        @HeaderParam("userid") int userid,
@@ -165,7 +146,8 @@ public class DataController implements DataService
         }
 
     }
-    @Path("/new/LocationCardw")
+    @Path("/LocationCardw")
+    @Override
     @GET
     public Response createLocationCardw(@HeaderParam("loc_Id") String loc_Id,
                                         @HeaderParam("userid") int userid,
@@ -184,7 +166,8 @@ public class DataController implements DataService
         }
 
     }
-    @Path("/new/DriversLicense")
+    @Path("/DriversLicense")
+    @Override
     @GET
     public Response createDriversLicense(@HeaderParam("loc_Id") String card_number,
                                          @HeaderParam("userid") int userid,
@@ -203,7 +186,8 @@ public class DataController implements DataService
         }
 
     }
-    @Path("/new/Message")
+    @Path("/Message")
+    @Override
     @GET
     public Response createMessage(@HeaderParam("subject") String subject,
                                   @HeaderParam("message") String message,
@@ -224,9 +208,4 @@ public class DataController implements DataService
         }
 
     }
-    /*
-    public Response deleteUser(@HeaderParam("userName") String userName)
-    {
-
-    }*/
 }

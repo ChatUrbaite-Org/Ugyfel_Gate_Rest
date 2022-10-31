@@ -4,8 +4,8 @@ import com.project.ugyfel_gate_rest.Classes.Location;
 import com.project.ugyfel_gate_rest.Classes.Organisation;
 import com.project.ugyfel_gate_rest.Classes.User;
 import com.project.ugyfel_gate_rest.DataBase.GetArray;
-import com.project.ugyfel_gate_rest.GetJSON;
-import com.project.ugyfel_gate_rest.MD5;
+import com.project.ugyfel_gate_rest.Rest.GetJSON;
+import com.project.ugyfel_gate_rest.Classes.MD5;
 import org.junit.Test;
 
 import java.security.NoSuchAlgorithmException;
@@ -38,7 +38,7 @@ public class JSONTest
     @Test
     public void IdCardJSONTest()
     {
-        GetJSON.getJSONIDCARD(user);
+        GetJSON.getJSONIDCard(user);
     }
     @Test
     public void DriversLicenseJSONTest()

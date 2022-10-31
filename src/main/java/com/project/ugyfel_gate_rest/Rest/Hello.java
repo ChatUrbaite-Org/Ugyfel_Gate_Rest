@@ -1,4 +1,4 @@
-package com.project.ugyfel_gate_rest;
+package com.project.ugyfel_gate_rest.Rest;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

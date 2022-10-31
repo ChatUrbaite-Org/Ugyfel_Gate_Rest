@@ -3,9 +3,7 @@ package com.project.ugyfel_gate_rest.DataBase;
 import com.project.ugyfel_gate_rest.Classes.Location;
 import com.project.ugyfel_gate_rest.Classes.Organisation;
 import com.project.ugyfel_gate_rest.Classes.User;
-import com.project.ugyfel_gate_rest.MD5;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Objects;
 

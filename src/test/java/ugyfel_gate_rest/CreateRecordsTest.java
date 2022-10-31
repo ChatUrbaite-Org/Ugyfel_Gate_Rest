@@ -5,7 +5,7 @@ import com.project.ugyfel_gate_rest.DataBase.GetArray;
 import com.project.ugyfel_gate_rest.DataBase.GetId;
 import com.project.ugyfel_gate_rest.DataBase.Insert_Into_DataBase;
 import com.project.ugyfel_gate_rest.Enums.Nationality;
-import com.project.ugyfel_gate_rest.MD5;
+import com.project.ugyfel_gate_rest.Classes.MD5;
 import org.junit.Test;
 
 import java.security.NoSuchAlgorithmException;

@@ -1,14 +1,11 @@
 package ugyfel_gate_rest;
 
-import com.project.ugyfel_gate_rest.MD5;
+import com.project.ugyfel_gate_rest.Classes.MD5;
 import org.junit.Test;
 
-import javax.xml.bind.DatatypeConverter;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import static junit.framework.Assert.assertEquals;
-import static org.hamcrest.MatcherAssert.assertThat;
 
 public class MD5Test
 {
