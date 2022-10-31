@@ -3,8 +3,6 @@ package ugyfel_gate_rest;
 import com.project.ugyfel_gate_rest.DataBase.LoadMySQL;
 import org.junit.jupiter.api.Test;
 
-import java.sql.SQLException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LoadMySQLTest
@@ -13,34 +11,28 @@ public class LoadMySQLTest
         LoadMySQL load = new LoadMySQL();
     }
     @Test
-    public void DriverTest() throws SQLException
-    {
+    public void DriverTest() {
         assertEquals("com.mysql.cj.jdbc.Driver", LoadMySQL.getDriverName());
     }
     @Test
-    public void AddressTest() throws SQLException
-    {
+    public void AddressTest() {
         assertEquals("jdbc:mysql://localhost:3306/", LoadMySQL.getAddress());
     }
     @Test
-    public void UserPassTest() throws SQLException
-    {
+    public void UserPassTest() {
         assertEquals("?user=root&password=", LoadMySQL.getUserPass());
     }
 
     @Test
-    public void DBNameTest() throws SQLException
-    {
+    public void DBNameTest() {
         assertEquals("projekt", LoadMySQL.getDBName());
     }
     @Test
-    public void UserNameTest() throws SQLException
-    {
+    public void UserNameTest() {
         assertEquals("root", LoadMySQL.getUserName());
     }
     @Test
-    public void PasswordTest() throws SQLException
-    {
+    public void PasswordTest() {
         assertEquals("", LoadMySQL.getPassword());
     }
 }
