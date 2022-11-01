@@ -22,5 +22,7 @@ public interface GetService
     Response getLocationCards();
     //Path("/driverslicenses")
     Response getDriversLicenses();
+    //Path("/messages")
+    public Response getMessages();
 }
 

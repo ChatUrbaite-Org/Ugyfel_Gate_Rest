@@ -1,6 +1,7 @@
 package ugyfel_gate_rest;
 
 import com.project.ugyfel_gate_rest.Classes.*;
+import com.project.ugyfel_gate_rest.DataBase.Create_DataBase_With_Tables;
 import com.project.ugyfel_gate_rest.DataBase.GetArray;
 import com.project.ugyfel_gate_rest.DataBase.GetId;
 import com.project.ugyfel_gate_rest.DataBase.Insert_Into_DataBase;
@@ -34,7 +35,9 @@ public class CreateRecordsTest
     Drivers_License driversLicense = new Drivers_License(user,"sdadsa",Date.valueOf("2021-07-01"),Date.valueOf("2031-07-01"),organisation);
     Message message = new Message(user,organisation,"Befizetés","Önnek egy befizetetlen számlája van!",Date.valueOf("2022-10-26"),Date.valueOf("2022-11-26"),false,false);
 
-    public CreateRecordsTest() throws NoSuchAlgorithmException {
+    public CreateRecordsTest() throws NoSuchAlgorithmException
+    {
+        Create_DataBase_With_Tables createDataBaseWithTables = new Create_DataBase_With_Tables();
     }
 
     @Test

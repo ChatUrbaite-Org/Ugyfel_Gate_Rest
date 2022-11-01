@@ -15,6 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class JSONTest
 {
     User user = GetArray.getDataFromUserTable().get(2);
+    User user1 = GetArray.getDataFromUserTable().get(1);
+    User user2 = GetArray.getDataFromUserTable().get(0);
     Organisation organisation = GetArray.getDataFromOrganisationsTable().get(0);
     Location location = GetArray.getDataFromLocationsTable().get(0);
     @Test
@@ -36,6 +38,8 @@ public class JSONTest
     public void LocationCardJSONTest()
     {
         GetJSON.getJSONLocationCard(user);
+        GetJSON.getJSONLocationCard(user1);
+        GetJSON.getJSONLocationCard(user2);
     }
     @Test
     public void IdCardJSONTest()

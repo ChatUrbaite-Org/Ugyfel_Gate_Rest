@@ -117,4 +117,17 @@ public class GetObject
         }
         return null;
     }
+
+    public static @Nullable Message getMessageByUserid(int userid)
+    {
+        ArrayList<Message> id_cards = getDataFromMessagesTable();
+        for (Message message : id_cards)
+        {
+            if(Objects.equals(message.getUser().getId(), userid))
+            {
+                return message;
+            }
+        }
+        return null;
+    }
 }

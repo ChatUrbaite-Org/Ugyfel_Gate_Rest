@@ -118,4 +118,13 @@ public class GetController implements GetService
 
         return Response.ok(getJSONDriversLicenses().toString()).type(MediaType.APPLICATION_JSON).build();
     }
+    @Override
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/messages")
+    public Response getMessages()
+    {
+
+        return Response.ok(GetJSON.getJSONMessages().toString()).type(MediaType.APPLICATION_JSON).build();
+    }
 }
