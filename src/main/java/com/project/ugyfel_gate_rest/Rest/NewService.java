@@ -3,7 +3,7 @@ package com.project.ugyfel_gate_rest.Rest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import java.util.Date;
-//Path("/new")
+//Path("/new") @POST
 public interface NewService
 {
     //Path("/user")

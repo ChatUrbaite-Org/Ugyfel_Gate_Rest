@@ -3,7 +3,7 @@ package com.project.ugyfel_gate_rest.Rest;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
-//Path("/get")
+//Path("/get") @GET
 public interface GetService
 {
     //Path("/usern")
@@ -23,6 +23,6 @@ public interface GetService
     //Path("/driverslicenses")
     Response getDriversLicenses();
     //Path("/messages")
-    public Response getMessages();
+    Response getMessages();
 }
 

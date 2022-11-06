@@ -17,7 +17,7 @@ public class NewController implements NewService
     Insert_Into_DataBase insert = new Insert_Into_DataBase();
     @Path("/user")
     @Override
-    @GET
+    @POST
     public Response createNewUser(@HeaderParam("name") String name,
                                   @HeaderParam("userName") String username,
                                   @HeaderParam("email") String email,
@@ -42,7 +42,7 @@ public class NewController implements NewService
     }
     @Path("/DLocation")
     @Override
-    @GET
+    @POST
     public Response createNewDLocation(@HeaderParam("country") String country,
                                        @HeaderParam("county") String county,
                                        @HeaderParam("city") String city,
@@ -64,7 +64,7 @@ public class NewController implements NewService
     }
     @Path("/RLocation")
     @Override
-    @GET
+    @POST
     public Response createNewRLocation(@HeaderParam("country") String country,
                                        @HeaderParam("county") String county,
                                        @HeaderParam("city") String city,
@@ -87,7 +87,7 @@ public class NewController implements NewService
     }
     @Path("/Organisation")
     @Override
-    @GET
+    @POST
     public Response createNewOrganisation(@HeaderParam("name") String name,
                                           @HeaderParam("locid") int locid,
                                           @HeaderParam("nationality") String nationality)
@@ -105,7 +105,7 @@ public class NewController implements NewService
     }
     @Path("/IDCard")
     @Override
-    @GET
+    @POST
     public Response createNewIDCard(@HeaderParam("can_number") int can_number,
                                     @HeaderParam("userid") int userid,
                                     @HeaderParam("organid") int organid,
@@ -127,7 +127,7 @@ public class NewController implements NewService
     }
     @Path("/LocationCard")
     @Override
-    @GET
+    @POST
     public Response createLocationCard(@HeaderParam("loc_Id") String loc_Id,
                                        @HeaderParam("userid") int userid,
                                        @HeaderParam("defaultlocation") int defaultlocation,
@@ -146,7 +146,7 @@ public class NewController implements NewService
     }
     @Path("/LocationCardw")
     @Override
-    @GET
+    @POST
     public Response createLocationCardw(@HeaderParam("loc_Id") String loc_Id,
                                         @HeaderParam("userid") int userid,
                                         @HeaderParam("defaultlocation") int defaultlocation,
@@ -166,7 +166,7 @@ public class NewController implements NewService
     }
     @Path("/DriversLicense")
     @Override
-    @GET
+    @POST
     public Response createDriversLicense(@HeaderParam("loc_Id") String card_number,
                                          @HeaderParam("userid") int userid,
                                          @HeaderParam("expiry") Date expiry,
@@ -186,7 +186,7 @@ public class NewController implements NewService
     }
     @Path("/Message")
     @Override
-    @GET
+    @POST
     public Response createMessage(@HeaderParam("subject") String subject,
                                   @HeaderParam("message") String message,
                                   @HeaderParam("userid") int userid,

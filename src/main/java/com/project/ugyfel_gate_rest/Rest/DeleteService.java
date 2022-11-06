@@ -2,7 +2,7 @@ package com.project.ugyfel_gate_rest.Rest;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
-//Path("/delete")
+//Path("/delete") @POST
 public interface DeleteService
 {
     //Path("/username")

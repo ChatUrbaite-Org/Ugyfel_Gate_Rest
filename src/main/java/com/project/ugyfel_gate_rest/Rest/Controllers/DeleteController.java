@@ -13,6 +13,7 @@ public class DeleteController implements DeleteService
 {
     @Path("/username")
     @Override
+    @POST
     public Response deleteUser(@HeaderParam("userName") String userName,
                                @HeaderParam("token") String token)
     {
@@ -39,6 +40,7 @@ public class DeleteController implements DeleteService
     }
     @Path("/location")
     @Override
+    @POST
     public Response deleteLocation(@HeaderParam("Locationid") int locid)
     {
         try{
@@ -51,6 +53,7 @@ public class DeleteController implements DeleteService
     }
     @Path("/organisation")
     @Override
+    @POST
     public Response deleteOrganisation(@HeaderParam("Organisationid") int orgid)
     {
         try{
@@ -63,6 +66,7 @@ public class DeleteController implements DeleteService
     }
     @Path("/IDCard")
     @Override
+    @POST
     public Response deleteIDCard(@HeaderParam("IDCardid") int IDCardid)
     {
         try{
@@ -75,6 +79,7 @@ public class DeleteController implements DeleteService
     }
     @Path("/LocationCard")
     @Override
+    @POST
     public Response deleteLocationCard(@HeaderParam("LocationCardid") int LocationCardid)
     {
         try{
@@ -87,6 +92,7 @@ public class DeleteController implements DeleteService
     }
     @Path("/DriversLicense")
     @Override
+    @POST
     public Response deleteDriversLicense(@HeaderParam("DriversLicenseid") int DriversLicenseid)
     {
         try{
@@ -99,6 +105,7 @@ public class DeleteController implements DeleteService
     }
     @Path("/Message")
     @Override
+    @POST
     public Response deleteMessage(@HeaderParam("Messageid") int Messageid)
     {
         try{
