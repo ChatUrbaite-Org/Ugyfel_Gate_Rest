@@ -40,7 +40,7 @@ public class LoadMySQL
     public static String getPassword() {
         return Password;
     }
-
+    /*
     public LoadMySQL()
     {
         try
@@ -77,5 +77,5 @@ public class LoadMySQL
         {
             e.printStackTrace();
         }
-    }
+    }*/
 }

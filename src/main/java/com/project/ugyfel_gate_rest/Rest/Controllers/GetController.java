@@ -2,7 +2,8 @@ package com.project.ugyfel_gate_rest.Rest.Controllers;
 
 import com.project.ugyfel_gate_rest.DataBase.GetJSON;
 import com.project.ugyfel_gate_rest.Rest.GetService;
-import org.json.JSONObject;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
@@ -24,46 +25,68 @@ public class GetController implements GetService
     @Path("/usern")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getUserData(@HeaderParam("userName") String username, @HeaderParam("token") String token) {
+    public Response getUserData(@HeaderParam("userName") String username, @HeaderParam("token") String token){
         JSONObject resp = new JSONObject();
-        resp.put("Username",username);
-        resp.put("Token",token);
-
+        try {
+            resp.put("Username",username);
+            resp.put("Token",token);
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
         if(!token.equals("") && (getUserUserName(username, token) != null))
         {
             //resp.put("Data", GetJSON.getJSONData("JaniHegedus",MD5.Translate_to_MD5_HASH("Jancsika20"))); //testData
-            resp.put("Data", GetJSON.getJSONDataUserName(username,token));
+            try {
+                resp.put("Data", GetJSON.getJSONDataUserName(username,token));
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
             return Response.ok(resp.toString()).type(MediaType.APPLICATION_JSON).build();
         }
         else
         {
-            resp.put("error","No Token");
+            try {
+                resp.put("error","No Token");
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
         }
         //
-        resp.put("Data", GetJSON.getJSONDataUserName(username,token));
+        try {
+            resp.put("Data", GetJSON.getJSONDataUserName(username,token));
+        } catch (JSONException e) {
+            throw new RuntimeException(e);
+        }
         return Response.status(Response.Status.UNAUTHORIZED).type(MediaType.APPLICATION_JSON).entity(resp).build();
     }
     @Override
     @Path("/usere")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getUserDataEmail(@HeaderParam("Email") String email, @HeaderParam("token") String token) {
+    public Response getUserDataEmail(@HeaderParam("Email") String email, @HeaderParam("token") String token)
+    {
         JSONObject resp = new JSONObject();
-        resp.put("Username",email);
-        resp.put("Token",token);
+        try{
+            resp.put("Username",email);
+            resp.put("Token",token);
 
-        if(!token.equals("") && (getUserEmail(email, token) != null))
-        {
-            //resp.put("Data", GetJSON.getJSONData("JaniHegedus",MD5.Translate_to_MD5_HASH("Jancsika20"))); //testData
+            if(!token.equals("") && (getUserEmail(email, token) != null))
+            {
+                //resp.put("Data", GetJSON.getJSONData("JaniHegedus",MD5.Translate_to_MD5_HASH("Jancsika20"))); //testData
+                resp.put("Data", GetJSON.getJSONDataUserName(email,token));
+                return Response.ok(resp.toString()).type(MediaType.APPLICATION_JSON).build();
+            }
+            else
+            {
+                resp.put("error","No Token");
+            }
+            //
             resp.put("Data", GetJSON.getJSONDataUserName(email,token));
-            return Response.ok(resp.toString()).type(MediaType.APPLICATION_JSON).build();
-        }
-        else
+        }catch (JSONException e)
         {
-            resp.put("error","No Token");
+            throw new RuntimeException(e);
         }
-        //
-        resp.put("Data", GetJSON.getJSONDataUserName(email,token));
+
         return Response.status(Response.Status.UNAUTHORIZED).type(MediaType.APPLICATION_JSON).entity(resp).build();
     }
     @Override

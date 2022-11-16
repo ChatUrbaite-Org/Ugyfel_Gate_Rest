@@ -1,4 +1,6 @@
 package com.project.ugyfel_gate_rest.Rest.Controllers;
+import com.project.ugyfel_gate_rest.Rest.HelloService;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 // Plain old Java Object it does not extend as class or implements
@@ -12,7 +14,7 @@ import javax.ws.rs.core.*;
 
 //Sets the path to base URL + /hello
 @Path("/hello")
-public class Hello {
+public class Hello implements HelloService {
 
     // This method is called if TEXT_PLAIN is request
     @GET
