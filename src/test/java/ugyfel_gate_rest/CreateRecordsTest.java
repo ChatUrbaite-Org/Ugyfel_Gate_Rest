@@ -41,7 +41,7 @@ public class CreateRecordsTest
     }
 
     @Test
-    public void UserTest() throws SQLException {
+    public void UserTest() throws SQLException, ClassNotFoundException {
 
         insert.insertIntoUserTable(user);
         insert.insertIntoUserTable(user1);
@@ -49,8 +49,7 @@ public class CreateRecordsTest
         assertEquals(3, GetArray.getDataFromUserTable().size());
     }
     @Test
-    public void LocationTest() throws SQLException
-    {
+    public void LocationTest() throws SQLException, ClassNotFoundException {
         insert.insertIntoLocationsTable(location);
         insert.insertIntoLocationsTable(location1);
         GetArray.getDataFromLocationsTable();
@@ -59,30 +58,29 @@ public class CreateRecordsTest
         assertEquals(2, GetId.getlocationID(location1));
     }
     @Test
-    public void OrgTest () throws SQLException
-    {
+    public void OrgTest () throws SQLException, ClassNotFoundException {
         insert.insertIntoOrganisationsTable(organisation);
         insert.insertIntoOrganisationsTable(organisation1);
         assertEquals(2, GetArray.getDataFromOrganisationsTable().size());
     }
     @Test
-    public void LocationCardTest() throws SQLException {
+    public void LocationCardTest() throws SQLException, ClassNotFoundException {
         insert.insertIntoLocationCardTable(location_card);
         insert.insertIntoLocationCardTable(location_card1);
         assertEquals(2,GetArray.getDataFromLocationCardTable().size());
     }
     @Test
-    public void DriversLicenseTest() throws SQLException {
+    public void DriversLicenseTest() throws SQLException, ClassNotFoundException {
         insert.insertIntoDriversLicenseTable(driversLicense);
         assertEquals(1,GetArray.getDataFromDriversLicenseTable().size());
     }
     @Test
-    public void MessagesTest() throws SQLException {
+    public void MessagesTest() throws SQLException, ClassNotFoundException {
         insert.insertIntoMessagesTable(message);
         assertEquals(1,GetArray.getDataFromMessagesTable().size());
     }
     @Test
-    public void IDCTest() throws SQLException {
+    public void IDCTest() throws SQLException, ClassNotFoundException {
         for (ID_CARD id_card : Arrays.asList(idCard, idCard1, idCard2)) {
             insert.insertIntoIDCardTable(id_card);
         }

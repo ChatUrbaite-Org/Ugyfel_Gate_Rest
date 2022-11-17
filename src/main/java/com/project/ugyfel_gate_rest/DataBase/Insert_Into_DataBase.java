@@ -13,7 +13,7 @@ public class Insert_Into_DataBase
     {
         new LoadMySQL();
     }
-    public void insertIntoUserTable(@NotNull User user) throws SQLException {
+    public void insertIntoUserTable(@NotNull User user) throws SQLException, ClassNotFoundException {
         String Uname = user.getName();
         String UserName =user.getUsername();
         String Password = user.getPassword();
@@ -30,6 +30,7 @@ public class Insert_Into_DataBase
         int Mom =0;
         if(isActive) active = 1;
         if(IsMom) Mom = 1;
+        Class.forName(LoadMySQL.getDriverName());
         Connection con = DriverManager.getConnection(LoadMySQL.getAddress() + LoadMySQL.getDBName(), LoadMySQL.getUserName(), LoadMySQL.getPassword());
         ArrayList<User> users = GetArray.getDataFromUserTable();
         ArrayList<String> userNamesTaken = new ArrayList<>();
@@ -81,8 +82,7 @@ public class Insert_Into_DataBase
             System.out.println("UserName is Taken!");
         }
     }
-    public void insertIntoLocationsTable(@NotNull Location location) throws SQLException
-    {
+    public void insertIntoLocationsTable(@NotNull Location location) throws SQLException, ClassNotFoundException {
         ArrayList<Location> usedlocations = GetArray.getDataFromLocationsTable();
         ArrayList<String> alltogethers =new ArrayList<>();
         for (Location usedlocation : usedlocations)
@@ -107,7 +107,7 @@ public class Insert_Into_DataBase
 
             String rest = location.getRest();
             Statement st;
-
+            Class.forName(LoadMySQL.getDriverName());
             Connection con = DriverManager.getConnection(LoadMySQL.getAddress() + LoadMySQL.getDBName(), LoadMySQL.getUserName(), LoadMySQL.getPassword());
             try
             {
@@ -146,8 +146,7 @@ public class Insert_Into_DataBase
             System.out.println("Record already Created");
         }
     }
-    public void insertIntoOrganisationsTable(@NotNull Organisation organisation) throws SQLException
-    {
+    public void insertIntoOrganisationsTable(@NotNull Organisation organisation) throws SQLException, ClassNotFoundException {
         ArrayList<Organisation> usedorganisations = GetArray.getDataFromOrganisationsTable();
         ArrayList<String> orgs =new ArrayList<>();
         for (Organisation usedorg : usedorganisations)
@@ -163,6 +162,7 @@ public class Insert_Into_DataBase
             int locationid = GetId.getlocationID(location);
             Nationality nationality = organisation.getNationality();
             Statement st;
+            Class.forName(LoadMySQL.getDriverName());
             Connection con = DriverManager.getConnection(LoadMySQL.getAddress() + LoadMySQL.getDBName(), LoadMySQL.getUserName(), LoadMySQL.getPassword());
             try
             {
@@ -192,7 +192,7 @@ public class Insert_Into_DataBase
             System.out.println("Record already Created");
         }
     }
-    public void insertIntoIDCardTable(@NotNull ID_CARD id_card) throws SQLException {
+    public void insertIntoIDCardTable(@NotNull ID_CARD id_card) throws SQLException, ClassNotFoundException {
         ArrayList<ID_CARD> usedlocations = GetArray.getDataFromIDCardTable();
         ArrayList<String> alltogethers =new ArrayList<>();
         for (ID_CARD usedid : usedlocations)
@@ -212,6 +212,7 @@ public class Insert_Into_DataBase
             int fingerprint =0;
             if(id_card.isFinger_print()) fingerprint = 1;
             Date from_date = (Date) id_card.getExpiry();
+            Class.forName(LoadMySQL.getDriverName());
             Connection con = DriverManager.getConnection(LoadMySQL.getAddress() + LoadMySQL.getDBName(), LoadMySQL.getUserName(), LoadMySQL.getPassword());
             Statement st;
             try
@@ -248,7 +249,7 @@ public class Insert_Into_DataBase
             System.out.println("Record already Created");
         }
     }
-    public void insertIntoLocationCardTable(@NotNull Location_CARD location_card) throws SQLException {
+    public void insertIntoLocationCardTable(@NotNull Location_CARD location_card) throws SQLException, ClassNotFoundException {
         ArrayList<Location_CARD> usedcards = GetArray.getDataFromLocationCardTable();
         ArrayList<String> alltogethers =new ArrayList<>();
         for (Location_CARD card : usedcards)
@@ -265,6 +266,7 @@ public class Insert_Into_DataBase
             int dlocationid = GetId.getlocationID(location_card.getDefaultlocation());
             if(location_card.getResidentallocation()==null)
             {
+                Class.forName(LoadMySQL.getDriverName());
                 Connection con = DriverManager.getConnection(LoadMySQL.getAddress() + LoadMySQL.getDBName(), LoadMySQL.getUserName(), LoadMySQL.getPassword());
                 Statement st;
                 try
@@ -297,6 +299,7 @@ public class Insert_Into_DataBase
             else
             {
                 int rlocationid = GetId.getlocationID(location_card.getResidentallocation());
+                Class.forName(LoadMySQL.getDriverName());
                 Connection con = DriverManager.getConnection(LoadMySQL.getAddress() + LoadMySQL.getDBName(), LoadMySQL.getUserName(), LoadMySQL.getPassword());
                 Statement st;
                 String sql = ("SELECT * FROM Users ORDER BY id DESC;");
@@ -334,7 +337,7 @@ public class Insert_Into_DataBase
             System.out.println("Record already Created");
         }
     }
-    public void insertIntoDriversLicenseTable(@NotNull Drivers_License driversLicense) throws SQLException {
+    public void insertIntoDriversLicenseTable(@NotNull Drivers_License driversLicense) throws SQLException, ClassNotFoundException {
         ArrayList<Drivers_License> usedlocations = GetArray.getDataFromDriversLicenseTable();
         ArrayList<String> alltogethers =new ArrayList<>();
         for (Drivers_License drivers_license : usedlocations)
@@ -350,6 +353,7 @@ public class Insert_Into_DataBase
             int orgid =GetId.getOrgId(driversLicense.getOrgan());
             Date acquireDate = (Date) driversLicense.getAcquire();
             Date expiryDate = (Date) driversLicense.getExpiry();
+            Class.forName(LoadMySQL.getDriverName());
             Connection con = DriverManager.getConnection(LoadMySQL.getAddress() + LoadMySQL.getDBName(), LoadMySQL.getUserName(), LoadMySQL.getPassword());
             Statement st;
             try
@@ -384,7 +388,7 @@ public class Insert_Into_DataBase
             System.out.println("Record already Created");
         }
     }
-    public void insertIntoMessagesTable(@NotNull Message message) throws SQLException {
+    public void insertIntoMessagesTable(@NotNull Message message) throws SQLException, ClassNotFoundException {
         ArrayList<Message> oldmessages = GetArray.getDataFromMessagesTable();
         ArrayList<String> alltogethers =new ArrayList<>();
         for (Message message0 : oldmessages)
@@ -405,6 +409,7 @@ public class Insert_Into_DataBase
             if(message.isRead()) isRead=1;
             int givenDocs = 0;
             if(message.getDocuments()) givenDocs=1;
+            Class.forName(LoadMySQL.getDriverName());
             Connection con = DriverManager.getConnection(LoadMySQL.getAddress() + LoadMySQL.getDBName(), LoadMySQL.getUserName(), LoadMySQL.getPassword());
             Statement st;
             try
